@@ -16,13 +16,11 @@ tooltip % (toggle ? "SUSPENDED" : "UNSUSPENDED")
 settimer,tooltipoff,500
 return
 
-
-
-;Insert::
-;WinGet, pid, PID, A
-;tooltip, %pid%
-;settimer,tooltipoff,500
-;return
++PrintScreen::
+WinGet, pid, PID, A
+tooltip, %pid%
+settimer,tooltipoff,500
+return
 
 #If WinActive("Word") or WinActive("OneNote")
 
@@ -33,8 +31,102 @@ return
 	return
 
 		#If toggle
-		z::
-		send, +{Left}^b^i{Right}
+		+i::
+		send, {\}in{space}
+		toggle := !toggle
+		return
+		
+		+e::
+		send, {\}exists{space}
+		toggle := !toggle
+		return
+		
+		^p::
+		send, {\}varphi{space}
+		toggle := !toggle
+		return
+		
+		#p::
+		send, {\}psi{space}
+		toggle := !toggle
+		return
+		
+		+n::
+		send, {\}nabla{space}
+		toggle := !toggle
+		return
+		
+		!e::
+		send, {\}varepsilon{space}
+		toggle := !toggle
+		return
+		
+		+k::
+		send, {\}bra{\}ket{space 2}{Left}
+		toggle := !toggle
+		return
+		
+		z::^z
+		
+		^c::
+		send, {\}coint{space}
+		toggle := !toggle
+		return
+		
+		~+Right::
+		keywait, Shift
+		send, ^b^i{left}^b
+		toggle := !toggle
+		return
+		
+		~+Left::
+		keywait, Shift
+		send, ^b^i{right}
+		toggle := !toggle
+		return
+		
+		+f::
+		send, {\}fraktur
+		toggle := !toggle
+		return
+
+		!p::
+		send, {\}prod{space}
+		toggle := !toggle
+		return
+		
+		!+d::
+		send, {\}Delta{space}
+		toggle := !toggle
+		return
+		
+		+x::
+		send, {\}xi{space}
+		toggle := !toggle
+		return
+		
+		!t::
+		send, {\}tilde{space 2}
+		toggle := !toggle
+		return
+		
+		!d::
+		send, {\}delta{space}
+		toggle := !toggle
+		return
+		
+		+a::
+		send, {\}approx{space}
+		toggle := !toggle
+		return
+		
+		m::
+		send, {\}mu{space}
+		toggle := !toggle
+		return
+		
+		+p::
+		send, {\}phi{space}
 		toggle := !toggle
 		return
 		
@@ -43,7 +135,7 @@ return
 		toggle := !toggle
 		return
 		
-		+i::
+		^i::
 		send, {\}int{space}
 		toggle := !toggle
 		return
@@ -53,8 +145,8 @@ return
 		toggle := !toggle
 		return
 
-		+e::
-		send, {\}equiv{space}
+		^e::
+		send, {\}eta{space}
 		toggle := !toggle
 		return
 		
@@ -123,7 +215,7 @@ return
 		toggle := !toggle
 		return
 		
-		m::
+		+m::
 		send, {\}matrix{space}(&){Left}
 		toggle := !toggle
 		return
@@ -144,7 +236,7 @@ return
 		return
 		
 		n::
-		send, {\}nabla{space}
+		send, {\}norm{\}norm{space 2}{left}
 		toggle := !toggle
 		return
 		
@@ -164,7 +256,7 @@ return
 		return
 		
 		+t::
-		send, {\}therefore{Space}
+		send, {\}times{Space}
 		toggle := !toggle
 		return
 		
@@ -243,7 +335,7 @@ return
 		return
 		
 		=::
-		send, {+}
+		send, !=
 		toggle := !toggle
 		return
 		
@@ -270,62 +362,3 @@ tooltipoff:
 settimer,tooltipoff,off
 tooltip
 return
-
-#If WinActive("ahk_pid" . 9268) or WinActive("PotPlayer") or WinActive("Photos")
-`::
-;send, {down}
-;sleep, 100
-;send, {enter}
-;sleep, 100
-
-global loopcount
-
-send, {alt}
-sleep, 50
-send, v
-sleep, %loopcount%
-send, l{down}{right}
-sleep, %loopcount%
-send, {Enter}
-;sleep, 100
-;send, {alt down}{up}{alt up}
-return
-;_____________________________________________________________________________________________________________
-w::Up
-a::left
-s::down
-d::right
-^w::^w
-^s::^s
-!d::!d
-#d::#d
-#+s::#+s
-
-#esc::
-send, {Delete}
-return
-
-!Capslock::
-send, {Enter}
-return
-
-#Capslock::
-send, {Enter}
-return
-
-!+s::
-send, {pgdn}
-return
-
-!+w::
-send, {pgup}
-return
-
-!+a::
-send, {home}
-return
-
-!+d::
-send, {end}
-return
-#if
