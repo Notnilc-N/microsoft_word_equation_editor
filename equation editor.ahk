@@ -4,15 +4,57 @@
 ; + = {shift}
 ; # = {windows_key}
 
-;Initialize them all, and then copy/paste them.
+;To do: Initialize them all, and then copy/paste them?
 coordmode,mouse,screen					; COORDINATE MODE RELATIVE TO SCREEN.
 settitlematchmode, 2
 setkeydelay, 0, 0
 
+
+;`::
+;send, ^a
+;sleep, 100
+;send, ^c
+;sleep, 100
+;send, !{f4}
+;sleep, 100
+;send, {Right}{Enter}
+;sleep, 100
+;send, ^{End}
+;sleep, 100
+;send, {Enter 2}
+;sleep, 100
+;send, ^v
+;return
+
+;send, {Delete 2}
+;sleep, 50
+;send, ^h
+;sleep, 50
+;send, [
+;sleep, 50
+;send, !a
+;sleep, 50
+;send, +{Left}
+;sleep, 50
+;send, ]
+;sleep, 50
+;send, !a
+;sleep, 50
+;send, +{Left}
+;sleep, 50
+;send, y
+;sleep, 50
+;send, {Enter}
+;sleep, 50
+;send, {Escape}
+;sleep, 50
+;send, {Left}{Backspace}{Enter 2}
+;return
+
 Insert::
 suspend
-toggle := !toggle
-tooltip % (toggle ? "SUSPENDED" : "UNSUSPENDED")
+teggle := !teggle
+tooltip % (teggle ? "EQ EDITOR SUSPENDED" : "EQ EDITOR UNSUSPENDED")
 settimer,tooltipoff,500
 return
 
@@ -31,328 +73,405 @@ return
 	return
 
 		#If toggle
-		+i::
-		send, {\}in{space}
-		toggle := !toggle
+		#i::
+		toggle := false
+		send, \iota{space}
 		return
 		
-		+e::
+		^d::
+		;keywait, Control
+		;if GetKeyState(1,P) {
+		;
+		;}
+		; this is supposed to send \dot, \ddot, or \dddot depending on whether or not 1, 2, or 3 is held down while control is released
+		toggle := false
+		send, \ddot{space 2}
+		return
+		
+		!c::
+		toggle := false
+		send, {\}chi{space}
+		return
+		
+		#+p::
+		toggle := false
+		send, {\}varpi{space}
+		return
+		
+		!+p::
+		toggle := false
+		send, {\}varphi{space}
+		return
+		
+		!+r::
+		toggle := false
+		send, {\}varrho{space}
+		return
+		
+		+r::
+		toggle := false
+		send, {\}rho{space}
+		return
+		
+		#t::
+		toggle := false
+		send, {\}Theta{space}
+		return
+		
+		+z::
+		toggle := false
+		send, {\}zeta{space}
+		return
+		
+		^i::
+		toggle := false
+		send, {\}in{space}
+		return
+		
+		^e::
+		toggle := false
 		send, {\}exists{space}
-		toggle := !toggle
 		return
 		
 		^p::
+		toggle := false
 		send, {\}varphi{space}
-		toggle := !toggle
 		return
 		
 		#p::
+		toggle := false
 		send, {\}psi{space}
-		toggle := !toggle
 		return
 		
 		+n::
+		toggle := false
 		send, {\}nabla{space}
-		toggle := !toggle
 		return
 		
 		!e::
+		toggle := false
 		send, {\}varepsilon{space}
-		toggle := !toggle
 		return
 		
 		+k::
+		toggle := false
 		send, {\}bra{\}ket{space 2}{Left}
-		toggle := !toggle
 		return
 		
 		z::^z
 		
 		^c::
+		toggle := false
 		send, {\}coint{space}
-		toggle := !toggle
 		return
 		
 		~+Right::
 		keywait, Shift
+		toggle := false
 		send, ^b^i{left}^b
-		toggle := !toggle
 		return
 		
 		~+Left::
 		keywait, Shift
+		toggle := false
 		send, ^b^i{right}
-		toggle := !toggle
 		return
 		
 		+f::
+		toggle := false
 		send, {\}fraktur
-		toggle := !toggle
 		return
 
 		!p::
+		toggle := false
 		send, {\}prod{space}
-		toggle := !toggle
 		return
 		
 		!+d::
+		toggle := false
 		send, {\}Delta{space}
-		toggle := !toggle
 		return
 		
 		+x::
+		toggle := false
 		send, {\}xi{space}
-		toggle := !toggle
 		return
 		
 		!t::
+		toggle := false
 		send, {\}tilde{space 2}
-		toggle := !toggle
 		return
 		
 		!d::
+		toggle := false
 		send, {\}delta{space}
-		toggle := !toggle
 		return
 		
 		+a::
+		toggle := false
 		send, {\}approx{space}
-		toggle := !toggle
 		return
 		
 		m::
+		toggle := false
 		send, {\}mu{space}
-		toggle := !toggle
 		return
 		
 		+p::
+		toggle := false
 		send, {\}phi{space}
-		toggle := !toggle
 		return
 		
 		v::
+		toggle := false
 		send, {\}vec{space 2}
-		toggle := !toggle
 		return
 		
-		^i::
+		+i::
+		toggle := false
 		send, {\}int{space}
-		toggle := !toggle
 		return
 
 		^s::
+		toggle := false
 		send, {\}script
-		toggle := !toggle
+		return
+		
+		#s::
+		toggle := false
+		send, {\}script
 		return
 
-		^e::
+		+e::
+		toggle := false
 		send, {\}eta{space}
-		toggle := !toggle
 		return
 		
 		+c::
+		toggle := false
 		send, {\}cdot{space}
-		toggle := !toggle
 		return
 		
 		+o::
+		toggle := false
 		send, {\}Omega{space}
-		toggle := !toggle
 		return
 		
 		k::
+		toggle := false
 		send, {\}kappa{space}
-		toggle := !toggle
 		return
 
 		+l::
+		toggle := false
 		send, {\}Lambda{space}
-		toggle := !toggle
 		return
 		
 		l::
+		toggle := false
 		send, {\}lambda{space}
-		toggle := !toggle
 		return
 		
 		f::
+		toggle := false
 		send, {\}forall{space}
-		toggle := !toggle
 		return
 		
 		e::
+		toggle := false
 		send, {\}epsilon{space}
-		toggle := !toggle
 		return
 		
 		!s::
+		toggle := false
 		send, {\}sum{space}
-		toggle := !toggle
 		return
 		
 		6::
 		send, {^}
-		toggle := !toggle
+		keywait, Space, D
+		toggle := false
 		return
 		
 		-::
+		toggle := false
 		send, _
-		toggle := !toggle
+		;Input, UserInput,v,{Space}{=} ; if space or = is pressed, then toggle off
+		;if ErrorLevel=EndKey:Space
+		;{
+		;	toggle := false
+		;}
+		;else if ErrorLevel=EndKey:=
+		;{
+		;	toggle := false
+		;}
 		return
 		
 		h::
+		toggle := false
 		send, {\}hat{space 2}
-		toggle := !toggle
 		return
 		
 		+s::
+		toggle := false
 		send, {\}sigma{space}
-		toggle := !toggle
 		return
 		
 		+b::
+		toggle := false
 		send, {\}bar{space 2}
-		toggle := !toggle
 		return
 		
 		+m::
+		toggle := false
 		send, {\}matrix{space}(&){Left}
-		toggle := !toggle
 		return
 		
 		s::
+		toggle := false
 		send, {\}sqrt{space}
-		toggle := !toggle
 		return
 		
 		+g::
+		toggle := false
 		send, {\}Gamma{space}
-		toggle := !toggle
 		return
 		
 		g::
+		toggle := false
 		send, {\}gamma{space}
-		toggle := !toggle
 		return
 		
 		n::
+		toggle := false
 		send, {\}norm{\}norm{space 2}{left}
-		toggle := !toggle
 		return
 		
 		t::
+		toggle := false
 		send, {\}theta{space}
-		toggle := !toggle
 		return
 		
 		b::
+		toggle := false
 		send, {\}beta{space}
-		toggle := !toggle
 		return
 		
 		a::
+		toggle := false
 		send, {\}alpha{space}
-		toggle := !toggle
 		return
 		
 		+t::
+		toggle := false
 		send, {\}times{Space}
-		toggle := !toggle
 		return
 		
 		i::
+		toggle := false
 		send, {\}infty{Space}
-		toggle := !toggle
 		return
 		
 		+d::
+		toggle := false
 		send, {\}double
-		toggle := !toggle
 		return
 		
 		d::
+		toggle := false
 		send, {\}partial{space}
-		toggle := !toggle
 		return
 		
 		r::
-		send, {\}Rightarrow{space}
-		toggle := !toggle
+		toggle := false
+		keywait, r
+		if !getkeystate("l")
+			send, {\}Rightarrow{space}
+		else
+			send, {Backspace}{\}Longleftrightarrow{space}
 		return
 
 		Up::
+		toggle := false
 		send, {\}above{space}
-		toggle := !toggle
 		return
 
 		Down::
+		toggle := false
 		send, {\}below{space}
-		toggle := !toggle
 		return
 
 		!o::
+		toggle := false
 		send, {\}open{space}
-		toggle := !toggle
 		return
 		
 		o::
+		toggle := false
 		send, {\}omega{space}
-		toggle := !toggle
 		return
 
 		p::
+		toggle := false
 		send, {\}pi{space}
-		toggle := !toggle
 		return
 		
 		c::
+		toggle := false
 		send, {\}close{space 2}
-		toggle := !toggle
 		return
 		
 		+Backspace::
+		toggle := false
 		send, {Backspace 5}
-		toggle := !toggle
 		return
 		
 		Tab::
+		toggle := false
 		send, {space 10}
-		toggle := !toggle
 		return
 		
 		]::
 		send, +{F10}
 		sleep, 50
+		toggle := false
 		send, in
-		toggle := !toggle
 		return
 		
 		[::
 		send, +{F10}
 		sleep, 50
+		toggle := false
 		send, iu
-		toggle := !toggle
 		return
 		
 		=::
+		toggle := false
 		send, !=
-		toggle := !toggle
+		;Input, UserInput,v,{Space}{=} ; if space or = is pressed, then toggle off
+		;if ErrorLevel=EndKey:Space
+		;{
+		;	toggle := false
+		;}
+		;else if ErrorLevel=EndKey:=
+		;{
+		;	toggle := false
+		;}
 		return
 		
 		9::
+		toggle := false
 		send, (
-		toggle := !toggle
 		return
 		
 		0::
+		toggle := false
 		send, )
-		toggle := !toggle
 		return
 		
 		`::
-		send, ^b!hfc
-		mousemove, 630, 425
-		toggle := !toggle
+		toggle := false
+		send, \
 		return
 		
 		#If
